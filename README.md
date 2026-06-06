@@ -70,11 +70,19 @@ Developed with support from the **Prototype Fund** (Software Sprint), funded by
 the German Federal Ministry of Research, Technology and Space (BMFTR) and
 supported by the Open Knowledge Foundation Deutschland.
 
-<p align="center">
-  <img src="logos/prototypefund.svg" alt="Prototype Fund" height="60">
-  &nbsp;&nbsp;&nbsp;
-  <img src="logos/bmftr.svg" alt="BMFTR" height="60">
-</p>
+<table align="center">
+  <tr>
+    <td align="center" valign="middle" width="320">
+      <a href="https://www.prototypefund.de/projects/pyconnectedness">
+        <img src="logos/prototypefund.svg" alt="Prototype Fund" height="130">
+      </a>
+    </td>
+    <td align="left" valign="middle" width="320">
+      <img src="logos/bmftr.svg" alt="BMFTR" height="130">
+    </td>
+  </tr>
+</table>
+
 
 ## License
 
