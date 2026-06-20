@@ -58,11 +58,16 @@ pyconnectedness/
 
 The methods draw on, among others:
 
-- Diebold and Yilmaz (2012, 2014) for *variance-decomposition-based connectedness and spillover measures*
+- Diebold and Yilmaz (2009, 2012, 2014) for *variance-decomposition-based connectedness and spillover measures*
 - Baruník and Křehlík (2018) for *frequency-domain connectedness*
 - Gissibl and Klüppelberg (2018) for *max-linear models on directed acyclic graphs* 
 
 (Reference list to be completed as the modules are implemented.)
+
+## Data
+
+The datasets used for the Diebold-Yilmaz connectedness analysis in this project are obtained from Mendeley Data:
+Nguyen, Viet Hoang; Kocenda, Evzen; Greenwood-Nimmo, Matthew (2024), “Detecting Statistically Significant Changes in Connectedness: A Bootstrap-based Technique”, Mendeley Data, V1, doi: 10.17632/rtwsfgpgmf.1
 
 ## Funding
 
