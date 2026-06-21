@@ -3,9 +3,11 @@ VAR-Wrapper
 
 Vector autoregression (VAR) for connecctedness analysis
 
-wrapper around statsmodels.tsa.api.VAR that exposes
-the quantities consumed from the Diebold-Yilmaz cocnnectedness
-the moving-average coefficient matrices of the VAR - the residula covariance matrix
+wrapper around statsmodels.tsa.api.VAR 
+used in Diebold-Yilmaz connectedness
+
+1) the moving-average coefficient matrices of the VAR - 
+2) the residula covariance matrix
 
 References
 ----------
@@ -17,6 +19,8 @@ multivariate models. Economics Letters, 58, 17-29.
 Diebold and Yilmaz (2009) Measuring financial asset return and volatility
 spillovers, with application to global equity markets. The Economic Journal,
 119, 158-171.
+
+Sims, C. A. (1980). Macroeconomics and Reality. Econometrica, 48(1), 1–48.
 
 """
 
