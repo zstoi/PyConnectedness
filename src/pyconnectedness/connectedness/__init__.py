@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+from .decomposition import generalized_fevd, orthogonalized_fevd, normalize_fevd
+
+
 from .var import VARFit, fit_var
 
 __all__ = [
@@ -7,7 +10,9 @@ __all__ = [
     "VARFit",
   #  "static_connectedness",
   #  "ConnectednessResult",
-  #  "generalized_fevd",
-  #  "orthogonalized_fevd",
-  #  "normalize_fevd",
+    "generalized_fevd",
+    "orthogonalized_fevd",
+    "normalize_fevd",
 ]
+
+
