@@ -68,8 +68,9 @@ def _measures(theta_norm: np.ndarray) -> dict:
     to_others = (theta_norm.sum(axis=0) - own) * 100.0      #  sums, off-diagonal
     from_others = (theta_norm.sum(axis=1) - own) * 100.0    #  sums, off-diagonal
     net = to_others - from_others
+    incl_own = theta_norm.sum(axis=0) * 100.0
     total = (theta_norm.sum() - np.trace(theta_norm)) / k * 100.0
-    return {"to": to_others, "from": from_others, "net": net, "total": total}
+    return {"to": to_others, "from": from_others, "net": net, "incl_own":incl_own, "total": total}
 
 
 def static_connectedness(
@@ -136,10 +137,12 @@ def static_connectedness(
     table = fevd_df.copy()
     table["FROM"] = m["from"]
     to_row = pd.Series(dict(zip(names, m["to"])), name="TO")
-    to_row["FROM"] = np.nan
+    to_row["FROM"] = m["to"].sum() # corner - sum of TO
+    incl_row = pd.Series(dict(zip(names,m["incl_own"])), name="TO_incl_own")
+    incl_row ["FROM"] = m["total"]
     net_row = pd.Series(dict(zip(names, m["net"])), name="NET")
-    net_row["FROM"] = m["total"]   # corner entry = total connectedness index
-    table = pd.concat([table, to_row.to_frame().T, net_row.to_frame().T])
+    net_row["FROM"] = 0.0 # m["total"]   # corner entry = total connectedness index
+    table = pd.concat([table, to_row.to_frame().T, incl_row.to_frame().T, net_row.to_frame().T])
 
     return ConnectednessResult(
         table=table,
