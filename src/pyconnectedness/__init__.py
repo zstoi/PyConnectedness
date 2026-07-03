@@ -11,7 +11,7 @@ from .connectedness import (VARFit, fit_var,
                             )
 
 __all__ = ["fit_var", "VARFit", 
-           "generalized_fevd", "normalize_fevd", "orthogoanalized_fevd",
+           "generalized_fevd", "normalize_fevd", "orthogonalized_fevd",
            "ConnectednessResult", "static_connectedness",
            ] 
 
