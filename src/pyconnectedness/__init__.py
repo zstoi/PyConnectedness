@@ -8,11 +8,15 @@ from __future__ import annotations
 from .connectedness import (VARFit, fit_var, 
                             generalized_fevd, normalize_fevd, orthogonalized_fevd,
                             ConnectednessResult, static_connectedness, 
+                            DynamicConnectednessResult, dynamic_connectedness
                             )
 
 __all__ = ["fit_var", "VARFit", 
            "generalized_fevd", "normalize_fevd", "orthogonalized_fevd",
-           "ConnectednessResult", "static_connectedness",
+           "ConnectednessResult", "static_connectedness", 
+           "DynamicConnectednessResult", "dynamic_connectedness"
            ] 
+
+
 
 
