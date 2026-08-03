@@ -38,7 +38,7 @@ def describe(df):
         x = df[col].dropna().values
         out[col] = [
             x.mean(),
-            pd.Series(x).median(),
+            pd.Series(x).median(), # why not directly?
             x.max(),
             x.min(),
             x.std(ddof=1),
