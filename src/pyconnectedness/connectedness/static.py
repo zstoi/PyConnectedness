@@ -56,6 +56,7 @@ class ConnectednessResult:
     directional_to: pd.Series
     directional_from: pd.Series
     net: pd.Series
+    pairwise_net: pd.DataFrame
 
     def __repr__(self) -> str:
         return f"ConnectednessResult(TCI={self.total:.2f}%, n={self.fevd.shape[0]})"
@@ -70,7 +71,9 @@ def _measures(theta_norm: np.ndarray) -> dict:
     net = to_others - from_others
     incl_own = theta_norm.sum(axis=0) * 100.0
     total = (theta_norm.sum() - np.trace(theta_norm)) / k * 100.0
-    return {"to": to_others, "from": from_others, "net": net, "incl_own":incl_own, "total": total}
+    pairwise = (theta_norm.T - theta_norm) * 100.0    # C_ij = theta_ji - theta_ij
+    return {"to": to_others, "from": from_others, "net": net, "incl_own":incl_own,
+            "total": total, "pairwise": pairwise}
 
 
 def static_connectedness(
@@ -151,4 +154,5 @@ def static_connectedness(
         directional_to=pd.Series(m["to"], index=names, name="TO"),
         directional_from=pd.Series(m["from"], index=names, name="FROM"),
         net=pd.Series(m["net"], index=names, name="NET"),
+        pairwise_net=pd.DataFrame(m["pairwise"], index=names, columns=names),
     )
