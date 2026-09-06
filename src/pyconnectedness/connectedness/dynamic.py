@@ -38,8 +38,7 @@ class DynamicConnectednessResult:
     net : DataFrame (T x k)
         TO minus FROM. Sums to zero across variables in every window.
     fevd : ndarray (T x k x k)
-        The per-window variance decompositions, stacked in window order. Kept
-        so that pairwise measures and heatmaps can be derived without refitting.
+    pairwise_net: ndarray (T x k x k)
     names : list of str
     window, horizon, lag_order : int
     method : str
@@ -52,6 +51,7 @@ class DynamicConnectednessResult:
     directional_from: pd.DataFrame
     net: pd.DataFrame
     fevd: np.ndarray
+    pairwise_net: np.ndarray
     names: list
     window: int
     horizon: int
@@ -139,6 +139,8 @@ def dynamic_connectedness(
         total[t] = res.total
  
     names = list(data.columns)
+
+    pairwise = theta.transpose(0,2,1) - theta # add
  
     return DynamicConnectednessResult(
         total=pd.Series(total, index=index, name="total"),
@@ -146,6 +148,7 @@ def dynamic_connectedness(
         directional_from=pd.DataFrame(frm, index=index, columns=names),
         net=pd.DataFrame(to - frm, index=index, columns=names),  # = res.net
         fevd=theta,
+        pairwise_net= pairwise, # add
         names=names,
         window=window,
         horizon=horizon,
