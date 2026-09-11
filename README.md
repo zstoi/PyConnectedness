@@ -69,6 +69,8 @@ The methods draw on, among others:
 The datasets used for the Diebold-Yilmaz connectedness analysis in this project are obtained from Mendeley Data:
 Nguyen, Viet Hoang; Kocenda, Evzen; Greenwood-Nimmo, Matthew (2024), “Detecting Statistically Significant Changes in Connectedness: A Bootstrap-based Technique”, Mendeley Data, V1, doi: 10.17632/rtwsfgpgmf.1
 
+Doan, Tom (2025), "DIEBOLDYILMAZ_IJF2012: RATS program to replicate Diebold and Yilmaz(2012) spillover calculations", [EconPapers](https://econpapers.repec.org/software/bocbocode/rtz00199.htm)
+
 ## Funding
 
 Developed with support from the **Prototype Fund** (Software Sprint), funded by
