@@ -17,17 +17,14 @@
 ## About
 
 **[PyConnectedness](https://www.prototypefund.de/projects/pyconnectedness)** is a Python library for 
-analysing dependence and spillovers across multivariate (time series) data. The goal is to bring 
-methods that are well established in econometrics and statistics, but still scattered or missing
+analysing dependence and spillovers across multivariate (time series) data. The goal is to bring methods that are well established in econometrics and statistics, but still scattered or missing
 in Python, into one open-source package.
 
 Planned scope includes:
 
 - **Connectedness and spillover analysis** in the spirit of the Diebold-Yilmaz
-  framework (variance-decomposition–based directional and net spillovers,
-  including dynamic and frequency-domain variants).
-- **Max-linear Bayesian networks** — graphical models on directed acyclic graphs
-  for modelling extremal dependence and causal structure between extreme events.
+ framework (variance-decomposition–based directional and net spillovers, including dynamic and frequency-domain variants).
+- **Max-linear Bayesian networks** — graphical models on directed acyclic graphs for modelling extremal dependence and causal structure between extreme events.
 - Network representation and visualisation of the estimated dependence structures.
 
 ## Planned repository structure
@@ -73,9 +70,7 @@ Doan, Tom (2025), "DIEBOLDYILMAZ_IJF2012: RATS program to replicate Diebold and 
 
 ## Funding
 
-Developed with support from the **Prototype Fund** (Software Sprint), funded by
-the German Federal Ministry of Research, Technology and Space (BMFTR) and
-supported by the Open Knowledge Foundation Deutschland.
+Developed with support from the **Prototype Fund** (Software Sprint), funded by the German Federal Ministry of Research, Technology and Space (BMFTR) and supported by the Open Knowledge Foundation Deutschland.
 
 <table align="center">
   <tr>
