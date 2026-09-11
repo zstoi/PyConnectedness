@@ -154,5 +154,5 @@ def static_connectedness(
         directional_to=pd.Series(m["to"], index=names, name="TO"),
         directional_from=pd.Series(m["from"], index=names, name="FROM"),
         net=pd.Series(m["net"], index=names, name="NET"),
-        pairwise_net=pd.DataFrame(m["pairwise"], index=names, columns=names),
+        pairwise_net=pd.DataFrame(m["pairwise"], index=names, columns=names).T,
     )
