@@ -46,7 +46,7 @@ pyconnectedness/
 │   └── pyconnectedness/        # the library source code
 │       ├── __init__.py
 │       ├── connectedness/      # Diebold-Yilmaz spillover measures
-│       ├── maxlinear/          # max-linear Bayesian networks
+│       ├── cacusality/         # max-linear Bayesian networks
 │       └── viz/                # network plotting
 ├── tests/                      # unit tests
 ├── examples/                   # example notebooks
