@@ -135,6 +135,12 @@ def fit_var(
         raise TypeError("data must be a pandas DataFrame")
     if data.isnull().any().any():
         raise ValueError("data contains missing values; clean it first")
+
+    if isinstance(data.index, pd.DatetimeIndex) and data.index.freq is None:
+        freq = pd.infer_freq(data.index)
+        if freq is not None:
+            data = data.copy() 
+            data.index = pd.DatetimeIndex(data.index, freq=freq)
  
     model = VAR(data)
     if lags is None:
