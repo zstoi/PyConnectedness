@@ -1,3 +1,6 @@
+import pytest
+from statsmodels.tools.sm_exceptions import ValueWarning
+
 import warnings
 
 import numpy as np
