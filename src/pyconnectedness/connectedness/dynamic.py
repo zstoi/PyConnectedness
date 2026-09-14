@@ -82,9 +82,7 @@ def dynamic_connectedness(
         Number of observations per estimation window. 200 weeks in DY-2009,
         200 days in DY-2012, 150 days in DY-2014.
     horizon : int
-        Forecast horizon H of the variance decomposition. The papers use
-        H = 10 (2009, 2012) and H = 12 (2014); the default follows the two
-        earlier papers, where the measures are already flat in H.
+        Forecast horizon H of the variance decomposition. 
     method : {"generalized", "orthogonalized"}
         Decomposition applied in every window, passed on to
         static_connectedness. DY-2009 is Cholesky, DY-2012 onward generalized.
@@ -141,6 +139,7 @@ def dynamic_connectedness(
     names = list(data.columns)
 
     pairwise = theta.transpose(0,2,1) - theta # add
+    pairwise = pairwise.T
  
     return DynamicConnectednessResult(
         total=pd.Series(total, index=index, name="total"),
