@@ -29,11 +29,14 @@ from ..connectedness.static import ConnectednessResult
 def spillover_heatmap(
     result,
     *,
+  #  kind: str = "fevd",
     ax=None,
     cmap: str = "viridis",
     annotate: bool = True,
     fmt: str = "{:.1f}",
     colorbar: bool = True,
+    xlabel: str | None = None,
+    ylabel: str | None = None,
     **kwargs,
 ):
     r"""
@@ -77,6 +80,8 @@ def spillover_heatmap(
     else:
         matrix = pd.DataFrame(result)
 
+
+
     if matrix.shape[0] != matrix.shape[1]:
         raise ValueError(f"expected a square matrix, got shape {matrix.shape}")
 
@@ -93,8 +98,8 @@ def spillover_heatmap(
     ax.set_xticklabels(matrix.columns, rotation=45, ha="right")
     ax.set_yticks(ticks)
     ax.set_yticklabels(matrix.index)
-    ax.set_xlabel("shock to")
-    ax.set_ylabel("variance of")
+    ax.set_xlabel(xlabel if xlabel is not None else "shock source")
+    ax.set_ylabel(ylabel if ylabel is not None else "affected variable")
 
     if annotate:
         # Take the text colour from the brightness of the cell rather than from
