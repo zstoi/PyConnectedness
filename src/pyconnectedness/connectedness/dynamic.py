@@ -139,7 +139,7 @@ def dynamic_connectedness(
     names = list(data.columns)
 
     pairwise = theta.transpose(0,2,1) - theta # add
-    pairwise = pairwise.T
+    # pairwise = pairwise.T
  
     return DynamicConnectednessResult(
         total=pd.Series(total, index=index, name="total"),
