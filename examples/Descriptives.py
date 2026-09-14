@@ -13,7 +13,7 @@ from scipy import stats
 data = pd.read_excel("examples/data/dy2009_returns.xlsx")
 data_vol = pd.read_excel("examples/data/dy2009_vola.xlsx")
 data["date"] = pd.to_datetime(data["date"], format="%m.%d.%y")
-data_vol["date"] = pd.to_datetime(data["date"], format="%d.%m.%y")
+data_vol["date"] = pd.to_datetime(data_vol["date"], format="%d.%m.%y")
 data = data.set_index("date")
 data_vol = data_vol.set_index("date")
 for col in data.columns:
