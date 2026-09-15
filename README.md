@@ -68,6 +68,8 @@ Nguyen, Viet Hoang; Kocenda, Evzen; Greenwood-Nimmo, Matthew (2024), “Detectin
 
 Doan, Tom (2025), "DIEBOLDYILMAZ_IJF2012: RATS program to replicate Diebold and Yilmaz(2012) spillover calculations", [EconPapers](https://econpapers.repec.org/software/bocbocode/rtz00199.htm)
 
+For Demo see: [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/zstoi/PyConnectedness/blob/main/examples/replicate_dy2009.ipynb)
+
 ## Funding
 
 Developed with support from the **Prototype Fund** (Software Sprint), funded by the German Federal Ministry of Research, Technology and Space (BMFTR) and supported by the Open Knowledge Foundation Deutschland.
