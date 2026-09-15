@@ -76,11 +76,11 @@ Developed with support from the **Prototype Fund** (Software Sprint), funded by 
   <tr>
     <td align="center" valign="middle" width="320">
       <a href="https://www.prototypefund.de/projects/pyconnectedness">
-        <img src="logos/prototypefund.svg" alt="Prototype Fund" height="130">
+        <img src="https://raw.githubusercontent.com/zstoi/PyConnectedness/main/logos/prototypefund.svg" alt="Prototype Fund" height="130">
       </a>
     </td>
     <td align="left" valign="middle" width="320">
-      <img src="logos/bmftr.svg" alt="BMFTR" height="130">
+      <img src="https://raw.githubusercontent.com/zstoi/PyConnectedness/main/logos/bmftr.svg" alt="BMFTR" height="130">
     </td>
   </tr>
 </table>
