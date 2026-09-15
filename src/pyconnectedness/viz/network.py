@@ -132,7 +132,14 @@ def plot_connectedness_graph(
         pos = nx.circular_layout(graph)
 
     net = np.array([graph.nodes[name].get("net", 0.0) for name in graph])
-    sizes = node_scale * (0.25 + 0.75 * np.abs(net) / np.abs(net).max())
+
+    max_abs_net = np.abs(net).max()
+
+    if max_abs_net == 0:
+        sizes = np.full(len(net), node_scale * 0.25)
+    else:
+        sizes = node_scale * (0.25 + 0.75 * np.abs(net) / max_abs_net)
+
     colors = np.where(net >= 0.0, "tab:red", "tab:blue")
 
     nx.draw_networkx_nodes(graph, pos, ax=ax, node_size=sizes,
