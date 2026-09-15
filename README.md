@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logos/logo.svg" alt="PyConnectedness logo" width="180">
+  <img src="https://raw.githubusercontent.com/zstoi/PyConnectedness/main/logos/logo.svg" alt="PyConnectedness logo" width="180">
 </p>
 
 <h1 align="center">PyConnectedness</h1>
@@ -43,7 +43,7 @@ pyconnectedness/
 │   └── pyconnectedness/        # the library source code
 │       ├── __init__.py
 │       ├── connectedness/      # Diebold-Yilmaz spillover measures
-│       ├── cacusality/         # max-linear Bayesian networks
+│       ├── causality/         # max-linear Bayesian networks
 │       └── viz/                # network plotting
 ├── tests/                      # unit tests
 ├── examples/                   # example notebooks
@@ -88,4 +88,4 @@ Developed with support from the **Prototype Fund** (Software Sprint), funded by 
 
 ## License
 
-Released under the [GNU General Public License v3.0](LICENSE).
+Released under the [GNU General Public License v3.0](https://github.com/zstoi/PyConnectedness/blob/main/LICENSE).
