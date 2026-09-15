@@ -11,3 +11,5 @@ __pycache__/
 sandbox/
 
 .coverage
+.coverage .*
+.ruff_cache/
