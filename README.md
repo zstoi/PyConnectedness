@@ -19,6 +19,20 @@
 analysing connectedness, spilovers and dependence  in multivariate (time series) data. The current implementation focuses on variance-decomposition-based connectedness measures in the spirit of Diebold and Yilmaz (2009, 2012, 2014), including static and rolling-window dynamic connectedness, directional spillovers, net spillovers, net pairwise directional connectedness, and graphical representations of connectedness networks. A max-linear Bayesian network module is in progress, aiming to extend the package towards modelling extremal dependence and causal structures between extreme events. Additional methods, including frequency-domain connectedness for analysing spillovers across different time horizons, are planned. The goal is to bring methods that are well established in econometrics and statistics, but still scattered or missing in Python, into one open-source package.
 
 
+## Project status
+
+- **Connectedness and spillover analysis** ![Implemented](https://img.shields.io/badge/status-implemented-brightgreen)  
+  Static and rolling-window dynamic connectedness, directional `TO` and `FROM`, net and net pairwise directional connectedness.
+
+- **Visualisation** ![Implemented](https://img.shields.io/badge/status-implemented-brightgreen)  
+  Spillover heatmaps and directed connectedness networks.
+
+- **Max-linear Bayesian networks** ![In progress](https://img.shields.io/badge/status-in%20progress-orange)  
+  Modelling extremal dependence and causal structures between extreme events.
+
+- **Frequency-domain connectedness** ![Planned](https://img.shields.io/badge/status-planned-lightgrey)  
+  Analysis of spillovers across different time horizons.
+
 ## Installation
 
 PyConnectedness requires Python 3.10 or newer.
@@ -124,6 +138,8 @@ Source notebook:
 
 
 These notebooks also serve as reproducible usage examples for the package.
+
+
 
 
 
