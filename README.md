@@ -16,8 +16,116 @@
 ## About
 
 **[PyConnectedness](https://www.prototypefund.de/projects/pyconnectedness)** is a Python library for 
-analysing dependence and spillovers across multivariate (time series) data. The goal is to bring methods that are well established in econometrics and statistics, but still scattered or missing
-in Python, into one open-source package.
+analysing connectedness, spilovers and dependence  in multivariate (time series) data. The current implementation focuses on variance-decomposition-based connectedness measures in the spirit of Diebold and Yilmaz (2009, 2012, 2014), including static and rolling-window dynamic connectedness, directional spillovers, net spillovers, net pairwise directional connectedness, and graphical representations of connectedness networks. The goal is to bring methods that are well established in econometrics and statistics, but still scattered or missing in Python, into one open-source package.
+
+
+## Installation
+
+PyConnectedness requires Python 3.10 or newer.
+
+A standard PyPI installation will be available once the package is released there:
+
+```bash
+pip install pyconnectedness
+```
+
+## Usage
+
+PyConnectedness provides a compact interface for estimating VAR-based connectedness measures.
+
+A static connectedness estimate can be computed directly from a pandas `DataFrame` using one-liner comands:
+
+```python
+from pyconnectedness import static_connectedness
+
+result = static_connectedness(
+    data,
+    horizon=10,
+    method="generalized",
+    lags=2,
+)
+
+print(result.table)
+print(result.total)
+print(result.directional_to)
+print(result.directional_from)
+print(result.net)
+print(result.pairwise_net)
+```
+
+For Diebold-Yilmaz (2009) - an orthogonalized Cholesky variance decomposition can be used:
+
+```python
+result = static_connectedness(
+    data,
+    horizon=10,
+    method="orthogonalized",
+    lags=2,
+)
+```
+
+Rolling-window connectedness is available through:
+
+```python
+from pyconnectedness import dynamic_connectedness
+
+dynamic = dynamic_connectedness(
+    data,
+    window=200,
+    horizon=10,
+    method="generalized",
+    lags=2,
+)
+
+print(dynamic.total)
+print(dynamic.net)
+```
+
+The package currently provides:
+
+- VAR estimation and moving-average representations
+- orthogonalized forecast error variance decomposition
+- generalized forecast error variance decomposition
+- static connectedness measures
+- rolling-window dynamic connectedness
+- total connectedness
+- directional `TO` and `FROM` measures
+- net directional connectedness
+- net pairwise directional connectedness
+- spillover heatmaps
+- directed connectedness networks
+
+For complete examples, see the replication notebooks below.
+
+## Replication of Diebold-Yilmaz papers
+
+The `examples/` directory contains end-to-end replications of the main Diebold-Yilmaz connectedness frameworks using the `PyConnectedness` package, providing reproducible examples and validation against published results.
+
+### Diebold-Yilmaz (2009)
+
+The DY-2009 replication uses the orthogonalized, Cholesky-based variance decomposition and reproduces the static and dynamic spillover analysis using the original framework.
+
+Source notebook:
+
+[`examples/replicate_dy2009.ipynb`](https://github.com/zstoi/PyConnectedness/blob/main/examples/replicate_dy2009.ipynb)
+
+Or with Colab: [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/zstoi/PyConnectedness/blob/main/examples/replicate_dy2009.ipynb)
+
+
+### Diebold-Yilmaz (2012)
+
+The DY-2012 replication uses the generalized forecast error variance decomposition and the corresponding row-normalized connectedness framework.
+
+
+Source notebook:
+
+[`examples/replicate_dy2012.ipynb`](https://github.com/zstoi/PyConnectedness/blob/main/examples/replicate_dy2012.ipynb)
+
+
+
+These notebooks also serve as reproducible usage examples for the package.
+
+
 
 Planned scope includes:
 
@@ -67,7 +175,6 @@ Nguyen, Viet Hoang; Kocenda, Evzen; Greenwood-Nimmo, Matthew (2024), “Detectin
 
 Doan, Tom (2025), "DIEBOLDYILMAZ_IJF2012: RATS program to replicate Diebold and Yilmaz(2012) spillover calculations", [EconPapers](https://econpapers.repec.org/software/bocbocode/rtz00199.htm)
 
-For Demo see: [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/zstoi/PyConnectedness/blob/main/examples/replicate_dy2009.ipynb)
 
 ## Funding
 
