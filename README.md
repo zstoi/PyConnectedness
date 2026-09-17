@@ -10,9 +10,8 @@
   <img src="https://img.shields.io/badge/python-3.10%2B-blue.svg" alt="Python 3.10+">
 </p>
 
-> ⚠️ **Active development.** This library is in an early stage. The API and
-> structure will change, and the first modules are being added over the coming
-> weeks.
+> ⚠️ **Active development.** This library is currently under active development. The API and
+> project structure may still change as additional connectedness and dependence methods are added. 
 
 ## About
 
