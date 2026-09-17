@@ -16,7 +16,7 @@
 ## About
 
 **[PyConnectedness](https://www.prototypefund.de/projects/pyconnectedness)** is a Python library for 
-analysing connectedness, spilovers and dependence  in multivariate (time series) data. The current implementation focuses on variance-decomposition-based connectedness measures in the spirit of Diebold and Yilmaz (2009, 2012, 2014), including static and rolling-window dynamic connectedness, directional spillovers, net spillovers, net pairwise directional connectedness, and graphical representations of connectedness networks. A max-linear Bayesian network module is in progress, aiming to extend the package towards modelling extremal dependence and causal structures between extreme events. Additional methods, including frequency-domain connectedness for analysing spillovers across different time horizons, are planned. The goal is to bring methods that are well established in econometrics and statistics, but still scattered or missing in Python, into one open-source package.
+analysing connectedness, spillovers and dependence in multivariate (time series) data. The current implementation focuses on variance-decomposition-based connectedness measures in the spirit of Diebold and Yilmaz (2009, 2012, 2014), including static and rolling-window dynamic connectedness, directional spillovers, net spillovers, net pairwise directional connectedness, and graphical representations of connectedness networks. A max-linear Bayesian network module is in progress, aiming to extend the package towards modelling extremal dependence and causal structures between extreme events. Additional methods, including frequency-domain connectedness for analysing spillovers across different time horizons, are planned. The goal is to bring methods that are well established in econometrics and statistics, but still scattered or missing in Python, into one open-source package.
 
 
 ## Project status
@@ -51,7 +51,7 @@ pip install pyconnectedness
 
 PyConnectedness provides a compact interface for estimating VAR-based connectedness measures.
 
-A static connectedness estimate can be computed directly from a pandas `DataFrame` using one-liner comands:
+A static connectedness estimate can be computed directly from a pandas `DataFrame` using a simple one-liner:
 
 ```python
 from pyconnectedness import static_connectedness
@@ -145,14 +145,6 @@ These notebooks also serve as reproducible usage examples for the package.
 
 
 
-
-
-Planned scope includes:
-
-- **Connectedness and spillover analysis** in the spirit of the Diebold-Yilmaz
- framework (variance-decomposition–based directional and net spillovers, including dynamic and frequency-domain variants).
-- **Max-linear Bayesian networks** — graphical models on directed acyclic graphs for modelling extremal dependence and causal structure between extreme events.
-- Network representation and visualisation of the estimated dependence structures.
 
 ## Planned repository structure
 
