@@ -26,7 +26,7 @@ analysing connectedness, spilovers and dependence  in multivariate (time series)
 - **Connectedness and spillover analysis**  
   Static and rolling-window dynamic connectedness, directional `TO` and `FROM`, net and net pairwise directional connectedness.
 
-- **Visualisation** ![Implemented](https://img.shields.io/badge/status-implemented-brightgreen)  
+- **Visualisation** 
   Spillover heatmaps and directed connectedness networks.
 
 ![In progress](https://img.shields.io/badge/status-in%20progress-orange)  
