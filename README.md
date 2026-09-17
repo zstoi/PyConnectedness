@@ -21,16 +21,20 @@ analysing connectedness, spilovers and dependence  in multivariate (time series)
 
 ## Project status
 
-- **Connectedness and spillover analysis** ![Implemented](https://img.shields.io/badge/status-implemented-brightgreen)  
+![Implemented](https://img.shields.io/badge/status-implemented-brightgreen) 
+
+- **Connectedness and spillover analysis**  
   Static and rolling-window dynamic connectedness, directional `TO` and `FROM`, net and net pairwise directional connectedness.
 
 - **Visualisation** ![Implemented](https://img.shields.io/badge/status-implemented-brightgreen)  
   Spillover heatmaps and directed connectedness networks.
 
-- **Max-linear Bayesian networks** ![In progress](https://img.shields.io/badge/status-in%20progress-orange)  
+![In progress](https://img.shields.io/badge/status-in%20progress-orange)  
+
+- **Max-linear Bayesian networks** 
   Modelling extremal dependence and causal structures between extreme events.
 
-- **Frequency-domain connectedness** ![Planned](https://img.shields.io/badge/status-planned-lightgrey)  
+- **Frequency-domain connectedness**  
   Analysis of spillovers across different time horizons.
 
 ## Installation
