@@ -146,13 +146,12 @@ These notebooks also serve as reproducible usage examples for the package.
 
 
 
-## Planned repository structure
+## Repository structure
 
 ```
 pyconnectedness/
 ├── README.md
 ├── LICENSE                     # GPLv3
-├── CONTRIBUTING.md
 ├── pyproject.toml              # packaging & dependencies
 ├── .gitignore
 ├── .github/
