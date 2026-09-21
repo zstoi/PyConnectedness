@@ -76,6 +76,33 @@ def _measures(theta_norm: np.ndarray) -> dict:
             "total": total, "pairwise": pairwise}
 
 
+
+def _build_result(theta_norm: np.ndarray, names: list) -> ConnectednessResult:
+    """Assemble a result object from a normalized decomposition."""
+    m = _measures(theta_norm)
+    fevd_df = pd.DataFrame(theta_norm * 100.0, index=names, columns=names)
+ 
+    # Spillover table in DY layout: FEVD + FROM column, then TO and NET rows
+    table = fevd_df.copy()
+    table["FROM"] = m["from"]
+    to_row = pd.Series(dict(zip(names, m["to"], strict=True)), name="TO")
+    to_row["FROM"] = m["to"].sum() # corner - sum of TO
+    incl_row = pd.Series(dict(zip(names,m["incl_own"], strict=True)), name="TO_incl_own")
+    incl_row ["FROM"] = m["total"]
+    net_row = pd.Series(dict(zip(names, m["net"], strict=True)), name="NET")
+    net_row["FROM"] = 0.0 # m["total"]   # corner entry = total connectedness index
+    table = pd.concat([table, to_row.to_frame().T, incl_row.to_frame().T, net_row.to_frame().T])
+ 
+    return ConnectednessResult(
+        table=table,
+        fevd=fevd_df,
+        total=float(m["total"]),
+        directional_to=pd.Series(m["to"], index=names, name="TO"),
+        directional_from=pd.Series(m["from"], index=names, name="FROM"),
+        net=pd.Series(m["net"], index=names, name="NET"),
+        pairwise_net=pd.DataFrame(m["pairwise"], index=names, columns=names)#.T,
+    )
+
 def static_connectedness(
     data: pd.DataFrame | None = None,
     horizon: int = 10,
@@ -132,27 +159,5 @@ def static_connectedness(
         )
     theta_norm = normalize_fevd(theta)
 
-    names = var_fit.names
-    m = _measures(theta_norm)
-    fevd_df = pd.DataFrame(theta_norm * 100.0, index=names, columns=names)
 
-    # Spillover table in DY layout: FEVD + FROM column, then TO and NET rows.
-    table = fevd_df.copy()
-    table["FROM"] = m["from"]
-    to_row = pd.Series(dict(zip(names, m["to"], strict=True)), name="TO")
-    to_row["FROM"] = m["to"].sum() # corner - sum of TO
-    incl_row = pd.Series(dict(zip(names,m["incl_own"], strict=True)), name="TO_incl_own")
-    incl_row ["FROM"] = m["total"]
-    net_row = pd.Series(dict(zip(names, m["net"], strict=True)), name="NET")
-    net_row["FROM"] = 0.0 # m["total"]   # corner entry = total connectedness index
-    table = pd.concat([table, to_row.to_frame().T, incl_row.to_frame().T, net_row.to_frame().T])
-
-    return ConnectednessResult(
-        table=table,
-        fevd=fevd_df,
-        total=float(m["total"]),
-        directional_to=pd.Series(m["to"], index=names, name="TO"),
-        directional_from=pd.Series(m["from"], index=names, name="FROM"),
-        net=pd.Series(m["net"], index=names, name="NET"),
-        pairwise_net=pd.DataFrame(m["pairwise"], index=names, columns=names)#.T,
-    )
+    return _build_result(theta_norm, var_fit.names)
