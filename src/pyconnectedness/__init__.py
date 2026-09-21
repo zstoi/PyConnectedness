@@ -7,15 +7,15 @@ from __future__ import annotations
 from .connectedness import (
                             ConnectednessResult,
                             DynamicConnectednessResult,
-                            VARFit,
                             FrequencyConnectednessResult,
+                            VARFit,
                             dynamic_connectedness,
                             fit_var,
+                            frequency_connectedness,
                             generalized_fevd,
                             normalize_fevd,
                             orthogonalized_fevd,
-                            static_connectedness,   
-                            frequency_connectedness,
+                            static_connectedness,
 )
 
 __all__ = ["fit_var", "VARFit", 
