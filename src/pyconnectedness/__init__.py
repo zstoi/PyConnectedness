@@ -22,7 +22,7 @@ __all__ = ["fit_var", "VARFit",
            "generalized_fevd", "normalize_fevd", "orthogonalized_fevd",
            "ConnectednessResult", "static_connectedness", 
            "DynamicConnectednessResult", "dynamic_connectedness", 
-           "FrequencyConnectednessResult, frequency_connectedness",
+           "FrequencyConnectednessResult", "frequency_connectedness",
            ] 
 
 
