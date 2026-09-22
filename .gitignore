@@ -13,3 +13,6 @@ sandbox/
 .coverage
 .coverage.*
 .ruff_cache/
+
+dist/
+build/
