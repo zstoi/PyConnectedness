@@ -213,11 +213,35 @@ The methods draw on, among others:
 
 ## Data
 
-The replication examples use publicly available data and reference material from the following sources:
+The data files in this directory are used for replication and validation of the connectedness measures implemented in PyConnectedness.
 
-Nguyen, Viet Hoang; Kocenda, Evzen; Greenwood-Nimmo, Matthew (2024), “Detecting Statistically Significant Changes in Connectedness: A Bootstrap-based Technique”, Mendeley Data, V1, doi: 10.17632/rtwsfgpgmf.1
+## Diebold-Yilmaz (2009)
 
-Doan, Tom (2025), "DIEBOLDYILMAZ_IJF2012: RATS program to replicate Diebold and Yilmaz(2012) spillover calculations", [EconPapers](https://econpapers.repec.org/software/bocbocode/rtz00199.htm)
+The files
+
+- `dy2009_returns.xlsx`
+- `dy2009_vola.xlsx`
+
+are based on the DY2009 data distributed with:
+
+Nguyen, Viet Hoang; Kocenda, Evzen; Greenwood-Nimmo, Matthew (2024), "Detecting Statistically 
+Significant Changes in Connectedness: A Bootstrap-based Technique", Mendeley Data, V1.
+
+DOI: https://doi.org/10.17632/rtwsfgpgmf.1
+
+## Diebold-Yilmaz (2012)
+
+The file
+
+- `dy2012_vola.xlsx`
+
+is based on the replication material available from:
+
+Doan, Tom (2025),
+"DIEBOLDYILMAZ_IJF2012: RATS program to replicate Diebold and Yilmaz (2012) spillover calculations."
+
+EconPapers:
+https://econpapers.repec.org/software/bocbocode/rtz00199.htm
 
 
 ## Funding
