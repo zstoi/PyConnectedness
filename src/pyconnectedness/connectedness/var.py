@@ -1,13 +1,13 @@
 """
 VAR-Wrapper 
 
-Vector autoregression (VAR) for connecctedness analysis
+Vector autoregression (VAR) for connectedness analysis
 
 wrapper around statsmodels.tsa.api.VAR 
 used in Diebold-Yilmaz connectedness
 
 1) the moving-average coefficient matrices of the VAR 
-2) the residula covariance matrix
+2) the residual covariance matrix
 
 References
 ----------
