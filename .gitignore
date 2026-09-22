@@ -16,3 +16,5 @@ sandbox/
 
 dist/
 build/
+.mypy_cache/
+htmlcov/
