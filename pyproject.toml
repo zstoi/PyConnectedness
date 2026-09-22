@@ -17,10 +17,10 @@ authors = [
 keywords = [
     "connectedness", "spillover", "diebold-yilmaz", "var",
     "fevd", "econometrics", "time-series", "bayesian-networks", "max-linear", "DAGs", "systemic-risk",
-    "extreme-events"
+    "extreme-events", "frequency-connectedness", "braunik-krehlik", "systemic-risk"
 ]
 classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
+    "Development Status :: 3 - Alpha",
     "Intended Audience :: Science/Research",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
@@ -63,7 +63,10 @@ Funding = "https://www.prototypefund.de/projects/pyconnectedness"
 [tool.hatch.build.targets.wheel]
 packages = ["src/pyconnectedness"]
 
-
+[tool.hatch.build.targets.sdist]
+exclude = [
+    "/examples/data/dy2012_vola.xlsx",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
