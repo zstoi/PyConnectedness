@@ -6,7 +6,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/status-active%20development-orange.svg" alt="Status: active development">
-  <img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPLv3">
+  <img src="https://img.shields.io/badge/License-GPLv3%2B-blue.svg" alt="License: GPLv3+">
   <img src="https://img.shields.io/badge/python-3.10%2B-blue.svg" alt="Python 3.10+">
 </p>
 
@@ -16,7 +16,7 @@
 ## About
 
 **[PyConnectedness](https://www.prototypefund.de/projects/pyconnectedness)** is a Python library for 
-analysing connectedness, spillovers and dependence in multivariate (time series) data. The current implementation focuses on variance-decomposition-based connectedness measures in the spirit of Diebold and Yilmaz (2009, 2012, 2014), including static and rolling-window dynamic connectedness, directional spillovers, net spillovers, net pairwise directional connectedness, and graphical representations of connectedness networks. A max-linear Bayesian network module is additionally in progress, aiming to extend the package towards modelling extremal dependence and causal structures between extreme events. Additional methods, including frequency-domain connectedness for analysing spillovers across different time horizons, are planned. The goal is to bring methods that are well established in econometrics and statistics, but still scattered or missing in Python, into one open-source package.
+analysing connectedness, spillovers and dependence in multivariate (time series) data. The current implementation focuses on variance-decomposition-based connectedness measures in the spirit of Diebold and Yilmaz (2009, 2012, 2014), including static and rolling-window dynamic connectedness, directional spillovers, net spillovers, net pairwise directional connectedness, and graphical representations of connectedness networks. Additionally, the package implements the frequency-domain connectedness framework of Baruník and Křehlík (2018), allowing connectedness to be decomposed across different frequency bands and time horizons. A max-linear Bayesian network module is additionally in progress, aiming to extend the package towards modelling extremal dependence and causal structures between extreme events. The goal is to bring methods that are well established in econometrics, statistics and applied mathematics, but still scattered or missing in Python, into one open-source package.
 
 
 ## Project status
@@ -24,24 +24,29 @@ analysing connectedness, spillovers and dependence in multivariate (time series)
 ![Implemented](https://img.shields.io/badge/status-implemented-brightgreen) 
 
 - **Connectedness and spillover analysis**  
-  Static and rolling-window dynamic connectedness, directional `TO` and `FROM`, net and net pairwise directional connectedness.
+  Static and rolling-window dynamic connectedness, directional `TO` and `FROM`, `net` and `net_pairwise` directional connectedness.
 
 - **Visualisation** 
   Spillover heatmaps and directed connectedness networks.
+
+- **Frequency-domain connectedness**  
+  Analysis of spillovers across different time horizons.
 
 ![In progress](https://img.shields.io/badge/status-in%20progress-orange)  
 
 - **Max-linear Bayesian networks** 
   Modelling extremal dependence and causal structures between extreme events.
 
-- **Frequency-domain connectedness**  
-  Analysis of spillovers across different time horizons.
+- **Animations**
+  Animated heatmaps, networks and time series (next release)
+
+
 
 ## Installation
 
 PyConnectedness requires Python 3.10 or newer.
 
-A standard PyPI installation will be available once the package is released there:
+Install from PyPI: 
 
 ```bash
 pip install pyconnectedness
@@ -99,6 +104,25 @@ print(dynamic.total)
 print(dynamic.net)
 ```
 
+
+Frequency connectedness splits the spillover table into bands:
+
+```python
+from pyconnectedness import frequency_connectedness
+
+frequency = frequency_connectedness(
+    data,
+    horizon=100,
+    periods=(5, 20),
+    method="generalized",
+    lags=4,
+)
+
+print(frequency.total)
+print(frequency.within)
+print(frequency.share)
+```
+
 The package currently provides:
 
 - VAR estimation and moving-average representations
@@ -110,8 +134,17 @@ The package currently provides:
 - directional `TO` and `FROM` measures
 - net directional connectedness
 - net pairwise directional connectedness
+- frequency-domain connectedness 
+- within-frequncy connectedness
 - spillover heatmaps
 - directed connectedness networks
+
+
+## Preview: animations (next release)
+
+The next version will add animated versions of the figures, build up step by step, or played back one rolling window per frame. The examples below use the DY-2012 data in `examples/data/` with 200-day rolling windows. 
+
+
 
 For complete examples, see the replication notebooks below.
 
@@ -161,12 +194,11 @@ pyconnectedness/
 │   └── pyconnectedness/        # the library source code
 │       ├── __init__.py
 │       ├── connectedness/      # Diebold-Yilmaz spillover measures
-│       ├── causality/         # max-linear Bayesian networks
+│       ├── causality/          # max-linear Bayesian networks (in development)
 │       └── viz/                # network plotting
 ├── tests/                      # unit tests
 ├── examples/                   # example notebooks
-├── logos/                      # project & funding logos
-└── docs/                       # documentation
+└── logos/                      # project & funding logos
 ```
 
 ## References
@@ -181,7 +213,8 @@ The methods draw on, among others:
 
 ## Data
 
-The datasets used for the Diebold-Yilmaz connectedness analysis in this project are obtained from Mendeley Data:
+The replication examples use publicly available data and reference material from the following sources:
+
 Nguyen, Viet Hoang; Kocenda, Evzen; Greenwood-Nimmo, Matthew (2024), “Detecting Statistically Significant Changes in Connectedness: A Bootstrap-based Technique”, Mendeley Data, V1, doi: 10.17632/rtwsfgpgmf.1
 
 Doan, Tom (2025), "DIEBOLDYILMAZ_IJF2012: RATS program to replicate Diebold and Yilmaz(2012) spillover calculations", [EconPapers](https://econpapers.repec.org/software/bocbocode/rtz00199.htm)
@@ -207,4 +240,4 @@ Developed with support from the **Prototype Fund** (Software Sprint), funded by 
 
 ## License
 
-Released under the [GNU General Public License v3.0](https://github.com/zstoi/PyConnectedness/blob/main/LICENSE).
+Released under the [GNU General Public License v3.0 or later](https://github.com/zstoi/PyConnectedness/blob/main/LICENSE).
