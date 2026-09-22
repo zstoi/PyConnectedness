@@ -135,7 +135,7 @@ The package currently provides:
 - net directional connectedness
 - net pairwise directional connectedness
 - frequency-domain connectedness 
-- within-frequncy connectedness
+- within-frequency connectedness
 - spillover heatmaps
 - directed connectedness networks
 
