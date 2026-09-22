@@ -17,7 +17,7 @@ authors = [
 keywords = [
     "connectedness", "spillover", "diebold-yilmaz", "var",
     "fevd", "econometrics", "time-series", "bayesian-networks", "max-linear", "DAGs", "systemic-risk",
-    "extreme-events", "frequency-connectedness", "braunik-krehlik", "systemic-risk"
+    "extreme-events", "frequency-connectedness", "barunik-krehlik"
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",
