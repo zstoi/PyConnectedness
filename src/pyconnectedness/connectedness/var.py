@@ -20,7 +20,7 @@ Diebold and Yilmaz (2009) Measuring financial asset return and volatility
 spillovers, with application to global equity markets. The Economic Journal,
 119, 158-171.
 
-Sims, C. A. (1980). Macroeconomics and Reality. Econometrica, 48(1), 1–48.
+Sims, C. A. (1980). Macroeconomics and Reality. Econometrica, 48(1), 1-48.
 
 """
 

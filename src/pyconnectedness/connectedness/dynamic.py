@@ -34,7 +34,7 @@ class DynamicConnectednessResult:
         others, off-diagonal column sums.
     directional_from : DataFrame (T x k)
         Contribution received by each variable from all others, off-diagonal
-        row sums.
+        row sums
     net : DataFrame (T x k)
         TO minus FROM. Sums to zero across variables in every window.
     fevd : ndarray (T x k x k)
@@ -76,11 +76,9 @@ def dynamic_connectedness(
     Parameters
     ----------
     data : DataFrame (n x k)
-        Observations in rows, variables in columns. For DY-2012 the columns
-        must already be log volatilities.
+        Observations in rows, variables in columns
     window : int
-        Number of observations per estimation window. 200 weeks in DY-2009,
-        200 days in DY-2012, 150 days in DY-2014.
+        Number of observations per estimation window
     horizon : int
         Forecast horizon H of the variance decomposition. 
     method : {"generalized", "orthogonalized"}
@@ -138,7 +136,7 @@ def dynamic_connectedness(
  
     names = list(data.columns)
 
-    pairwise = theta.transpose(0,2,1) - theta # add
+    pairwise = theta.transpose(0,2,1) - theta 
  
     return DynamicConnectednessResult(
         total=pd.Series(total, index=index, name="total"),
@@ -146,7 +144,7 @@ def dynamic_connectedness(
         directional_from=pd.DataFrame(frm, index=index, columns=names),
         net=pd.DataFrame(to - frm, index=index, columns=names),  # = res.net
         fevd=theta,
-        pairwise_net= pairwise, # add
+        pairwise_net= pairwise, 
         names=names,
         window=window,
         horizon=horizon,
