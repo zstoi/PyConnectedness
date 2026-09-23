@@ -140,9 +140,9 @@ The package currently provides:
 - directed connectedness networks
 
 
-## Preview: animations (next release)
+### Preview: animations (next release)
 
-The next version will add animated versions of the figures, build up step by step, or played back one rolling window per frame. The examples below use the DY-2012 data in `examples/data/` with 200-day rolling windows. 
+The next version will add animated versions of the figures, build up step by step, or played back one rolling window per frame. 
 
 
 
