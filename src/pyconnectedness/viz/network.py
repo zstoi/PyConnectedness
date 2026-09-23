@@ -5,7 +5,7 @@ Diebold and Yilmaz (2014) read the variance decomposition as a weighted,
 directed network: the variables are nodes and the net pairwise measures are
 the edges. Because the net pairwise matrix is antisymmetric, each pair of
 variables contributes a single edge, pointing from the net transmitter to the
-net receiverr
+net receiver
 
 References
 ----------
@@ -42,7 +42,7 @@ def connectedness_graph(result, *, threshold: float = 0.0) -> nx.DiGraph:
     \tilde\theta_{ij} > 0`, the part of j's forecast error variance that i
     explains in excess of what j explains of i's. Keeping only the positive
     entries of the antisymmetric matrix leaves one edge per pair and drops
-    the zero diagonal, so no self-loops arise. -->
+    the zero diagonal, so no self-loops arise.
 
     When a :class:`ConnectednessResult` is passed, the directional measures
     are attached to the nodes as the attributes ``to``, ``from`` and ``net``.
