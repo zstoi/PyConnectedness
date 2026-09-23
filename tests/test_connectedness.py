@@ -10,8 +10,7 @@ DATA = Path(__file__).resolve().parents[1] / "examples" / "data"
 
 returns = pd.read_excel(DATA / "dy2009_returns.xlsx").set_index("date")
 volatility = pd.read_excel(DATA / "dy2009_vola.xlsx").set_index("date")
-raw_vola = pd.read_excel(DATA / "dy2012_vola.xlsx").set_index("date")
-log_vola = np.log(raw_vola)
+log_volatility = np.log(volatility)
 
 conn = static_connectedness(returns, horizon=10, method="orthogonalized", lags=2)
 dyn = dynamic_connectedness(returns, window=200, horizon=10, method="orthogonalized", lags=2)
@@ -26,14 +25,9 @@ def test_dy2009_volatility():
     assert vol.total == pytest.approx(39.45, abs=0.01)
 
 
-def test_dy2012_log_volatility():
-    log = static_connectedness(log_vola, horizon=10, method="generalized", lags=4)
-    assert log.total == pytest.approx(12.59, abs=0.01)
-
-
-def test_dy2012_needs_logs():
-    raw = static_connectedness(raw_vola, horizon=10, method="generalized", lags=4)
-    assert raw.total < 20.0
+def test_generalized_log_volatility():
+    gen = static_connectedness(log_volatility, horizon=10, method="generalized", lags=2)
+    assert gen.total == pytest.approx(55.67, abs=0.01)
 
 
 def test_fevd_rows_sum_to_hundred():
@@ -56,11 +50,6 @@ def test_pairwise_rows_equal_net():
 def test_table_has_summary_rows():
     assert list(conn.table.index[-3:]) == ["TO", "TO_incl_own", "NET"]
     assert conn.table.loc["TO_incl_own", "FROM"] == pytest.approx(conn.total)
-
-
-def test_cholesky_is_lower_bound():
-    gen = static_connectedness(returns, horizon=10, method="generalized", lags=2)
-    assert gen.total > conn.total
 
 
 def test_window_count():

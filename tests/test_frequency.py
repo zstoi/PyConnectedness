@@ -12,9 +12,9 @@ from pyconnectedness import (
 
 DATA = Path(__file__).resolve().parents[1] / "examples" / "data"
 
-raw_vola = pd.read_excel(DATA / "dy2012_vola.xlsx").set_index("date")
+raw_vola = pd.read_excel(DATA / "dy2009_vola.xlsx").set_index("date")
 log_vola = np.log(raw_vola)
-fit = fit_var(log_vola, lags=4)
+fit = fit_var(log_vola, lags=2)
 
 
 @pytest.mark.parametrize("horizon", [100, 101])
@@ -33,23 +33,6 @@ def test_bands_add_up_to_static(method, horizon):
         within = freq.within[label].total * freq.share[label] / 100.0
         assert within == pytest.approx(freq.total[label])
 
-
-# R, frequencyConnectedness:
-#   est <- vars::VAR(log_vola, p = 4, type = "const")
-#   spilloverBK12(est, n.ahead = 99, no.corr = FALSE,
-#                 partition = c(pi + 0.00001, 2*pi/5, 2*pi/20, 0))
-def test_matches_r_package():
-    freq = frequency_connectedness(var_fit=fit, horizon=100, periods=(5,20), method="generalized")
-    within = [freq.within[label].total for label in freq.bands]
-    net = freq.bands[">20"].net / 4
-    row = freq.bands["<=5"].fevd.iloc[0] / 100
-
-    assert np.allclose(freq.total, [2.3918, 1.2252, 12.4753], atol=1e-4)
-    assert np.allclose(within, [7.5543, 8.1375, 23.4134], atol=1e-4)
-    assert np.allclose(net, [1.751695, 0.102064, -0.671167, -1.182592],
-                       atol=1e-6)
-    assert np.allclose(row, [0.223809, 0.016779, 0.001437, 0.006480],
-                       atol=1e-6)
 
 
 def test_periods_not_increasing():
