@@ -81,7 +81,7 @@ def _build_result(theta_norm: np.ndarray, names: list) -> ConnectednessResult:
     """Assemble a result object from a normalized decomposition."""
     m = _measures(theta_norm)
     fevd_df = pd.DataFrame(theta_norm * 100.0, index=names, columns=names)
- 
+
     # Spillover table in DY layout: FEVD + FROM column, then TO and NET rows
     table = fevd_df.copy()
     table["FROM"] = m["from"]
@@ -92,7 +92,7 @@ def _build_result(theta_norm: np.ndarray, names: list) -> ConnectednessResult:
     net_row = pd.Series(dict(zip(names, m["net"], strict=True)), name="NET")
     net_row["FROM"] = 0.0 # m["total"]   # corner entry = total connectedness index
     table = pd.concat([table, to_row.to_frame().T, incl_row.to_frame().T, net_row.to_frame().T])
- 
+
     return ConnectednessResult(
         table=table,
         fevd=fevd_df,

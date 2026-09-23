@@ -1,21 +1,21 @@
 """
-VAR-Wrapper 
+VAR-Wrapper
 
 Vector autoregression (VAR) for connectedness analysis
 
-wrapper around statsmodels.tsa.api.VAR 
+wrapper around statsmodels.tsa.api.VAR
 used in Diebold-Yilmaz connectedness
 
-1) the moving-average coefficient matrices of the VAR 
+1) the moving-average coefficient matrices of the VAR
 2) the residual covariance matrix
 
 References
 ----------
 Lütkepohl (2005) New Introduction to Multiple Time Series Analysis.
- 
+
 Pesaran and Shin (1998) Generalized impulse response analysis in linear
 multivariate models. Economics Letters, 58, 17-29.
- 
+
 Diebold and Yilmaz (2009) Measuring financial asset return and volatility
 spillovers, with application to global equity markets. The Economic Journal,
 119, 158-171.
@@ -26,27 +26,27 @@ Sims, C. A. (1980). Macroeconomics and Reality. Econometrica, 48(1), 1-48.
 
 
 from __future__ import annotations
- 
+
 from dataclasses import dataclass
- 
+
 import numpy as np
 import pandas as pd
 from statsmodels.tsa.api import VAR
- 
- 
+
+
 @dataclass
 class VARFit:
     r"""
     Estimated VAR(p) specification.
- 
+
     Holds the fitted statsmodels results together with the quantities the
     connectedness routines consume. The MA(\infty) representation
- 
+
     .. math:: y_t = \sum_{i=0}^\infty \Phi_i u_{t-i}
- 
+
     and the residual covariance :math:`\Sigma_u` are the two inputs to the
     forecast error variance decomposition.
- 
+
     Parameters
     ----------
     names : list of str
@@ -58,33 +58,33 @@ class VARFit:
     results : VARResults
         The underlying fitted statsmodels object.
     """
- 
+
     names: list[str]
     lag_order: int
     sigma: np.ndarray
     results: object
- 
+
     @property
     def k(self) -> int:
         """int : Number of variables in the system."""
         return len(self.names)
- 
+
     def ma_coefficients(self, horizon: int) -> np.ndarray:
         r"""
         Moving-average coefficients of the MA(\infty) representation.
- 
+
         Parameters
         ----------
         horizon : int
             Forecast horizon H. The number of returned matrices equals
             ``horizon``.
- 
+
         Notes
         -----
         Returns the matrices :math:`\Phi_0, \ldots, \Phi_{H-1}` with
         :math:`\Phi_0 = I_k`. This matches an H-step forecast error variance
         decomposition that sums over horizons :math:`h = 0, \ldots, H-1`.
- 
+
         Returns
         -------
         ndarray (horizon x k x k)
@@ -93,8 +93,8 @@ class VARFit:
             raise ValueError("horizon must be >= 1")
         # ma_rep(maxn=n) returns n + 1 matrices Phi_0, ..., Phi_n.
         return np.asarray(self.results.ma_rep(maxn=horizon - 1))
- 
- 
+
+
 def fit_var(
     data: pd.DataFrame,
     lags: int | None = None,
@@ -104,7 +104,7 @@ def fit_var(
 ) -> VARFit:
     """
     Estimate a VAR(p) model on a pandas DataFrame.
- 
+
     Parameters
     ----------
     data : DataFrame
@@ -119,11 +119,11 @@ def fit_var(
         Maximum lag order considered during automatic selection.
     trend : str
         Deterministic term passed through to statsmodels ("c", "n", "ct", ...).
- 
+
     Returns
     -------
     VARFit
- 
+
     Raises
     ------
     TypeError
@@ -139,15 +139,15 @@ def fit_var(
     if isinstance(data.index, pd.DatetimeIndex) and data.index.freq is None:
         freq = pd.infer_freq(data.index)
         if freq is not None:
-            data = data.copy() 
+            data = data.copy()
             data.index = pd.DatetimeIndex(data.index, freq=freq)
- 
+
     model = VAR(data)
     if lags is None:
         results = model.fit(maxlags=max_lags, ic=ic, trend=trend)
     else:
         results = model.fit(lags, trend=trend)
- 
+
     return VARFit(
         names=list(data.columns),
         lag_order=int(results.k_ar),

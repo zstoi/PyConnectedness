@@ -14,10 +14,10 @@ __all__ = [
     "generalized_fevd",
     "orthogonalized_fevd",
     "normalize_fevd",
-    "dynamic_connectedness", 
-    "DynamicConnectednessResult", 
+    "dynamic_connectedness",
+    "DynamicConnectednessResult",
     "frequency_connectedness",
-    "FrequencyConnectednessResult", 
+    "FrequencyConnectednessResult",
 ]
 
 

@@ -6,7 +6,7 @@ References
 Baruník and Křehlík (2018) Measuring the frequency dynamics of financial
 connectedness and systemic risk. Journal of Financial Econometrics, 16, 271-296.
 
-Diebold and Yilmaz (2012) Better to give than to receive: predictive directional 
+Diebold and Yilmaz (2012) Better to give than to receive: predictive directional
 measurement of volatility spillovers. International Journal of
 Forecasting, 28, 57-66.
 """
@@ -76,7 +76,7 @@ def frequency_connectedness(
         Forecast horizon H, also the number of points of the frequency grid.
     periods : tuple of int
         Band cutoffs as cycle lengths in observations, increasing and larger
-        than 2 
+        than 2
     method : {"generalized", "orthogonalized"}
         Decomposition scheme, as in static_connectedness.
     var_fit : VARFit, optional
@@ -124,7 +124,7 @@ def frequency_connectedness(
         raise ValueError("periods must be larger than 2")
     if (np.diff(periods) <= 0).any():
         raise ValueError("periods must be increasing")
-   
+
     names = var_fit.names
     sigma = var_fit.sigma
     k = var_fit.k
