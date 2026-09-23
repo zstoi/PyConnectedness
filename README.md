@@ -142,7 +142,7 @@ The package currently provides:
 
 ### Preview: animations (next release)
 
-The next version will add animated versions of the figures, build up step by step, or played back one rolling window per frame. 
+The next version will add animated versions of the figures, built up step by step, or played back one rolling window per frame. 
 
 
 
