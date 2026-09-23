@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+title: PyConnectedness
+message: >-
+  Please use the following citation to cite PyConnectedness in
+  scientific publications
+type: software
+authors:
+  - given-names: Zoran
+    family-names: Stoiljkovic
+  - given-names: Miljana
+    family-names: Cvetkovic
+version: 0.1.0
+repository-code: 'https://github.com/zstoi/PyConnectedness'
+url: 'https://github.com/zstoi/PyConnectedness'
+keywords:
+  - python
+  - connectedness
+  - spillover
+  - econometrics
+  - time-series
+  - systemic-risk
+  - diebold-yilmaz
+  - frequency-connectedness
+  - barunik-krehlik
+license: GPL-3.0-or-later
