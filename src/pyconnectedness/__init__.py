@@ -3,6 +3,9 @@ Connectedness measures
 """
 
 from __future__ import annotations
+from importlib.metadata import version
+
+__version__ = version("pyconnectedness")
 
 from .connectedness import (
                             ConnectednessResult,
@@ -23,6 +26,7 @@ __all__ = ["fit_var", "VARFit",
            "ConnectednessResult", "static_connectedness",
            "DynamicConnectednessResult", "dynamic_connectedness",
            "FrequencyConnectednessResult", "frequency_connectedness",
+           "__version__",
            ]
 
 
