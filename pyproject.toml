@@ -59,6 +59,7 @@ docs = [
 Homepage = "https://github.com/zstoi/PyConnectedness"
 Repository = "https://github.com/zstoi/PyConnectedness"
 Funding = "https://www.prototypefund.de/projects/pyconnectedness"
+Changelog = "https://github.com/zstoi/PyConnectedness/blob/main/CHANGELOG.md"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/pyconnectedness"]
