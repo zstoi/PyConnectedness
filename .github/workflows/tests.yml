@@ -25,4 +25,4 @@ jobs:
 
       - run: ruff check src/
 
-      - run: pytest
+      - run: pytest --cov=pyconnectedness --cov-report=term-missing

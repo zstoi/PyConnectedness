@@ -70,7 +70,7 @@ exclude = [
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-ra --cov=pyconnectedness --cov-report=term-missing"
+addopts = "-ra"
 
 [tool.ruff]
 line-length = 100
