@@ -182,7 +182,7 @@ def spillover_heatmap(
     if annotate:
         # Take the text colour from the brightness of the cell rather than from
         # the value, so annotations stay readable under a diverging colormap,
-        # where both ends of the scale are dark.      
+        # where both ends of the scale are dark.
         rgb = image.cmap(image.norm(values))[..., :3]
         brightness = rgb @ np.array([0.299, 0.587, 0.114])
         for (i, j), value in np.ndenumerate(values):
@@ -199,13 +199,13 @@ def spillover_heatmap(
     if not animation:
         return ax
 
-    if rolling: 
+    if rolling:
         n_steps = len (windows)
     else:
         order = np.argsort(-np.abs(values), axis = None, kind = "stable")
         counts = reveal_counts(values.size, n_frames)
         n_steps = len(counts)
-        
+
     def update(i):
         step = min(i, n_steps - 1)
         if rolling:

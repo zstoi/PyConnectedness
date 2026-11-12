@@ -20,10 +20,10 @@ import numpy as np
 import pandas as pd
 from matplotlib.animation import FuncAnimation
 
-
 from ..connectedness.dynamic import DynamicConnectednessResult
 from ..connectedness.static import ConnectednessResult
 from ._frames import reveal_counts, window_positions, window_title
+
 
 def _window_graph(result, t, threshold):
     """Graph of window t of a rolling result, with the node measures."""
