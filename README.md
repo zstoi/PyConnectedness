@@ -153,8 +153,10 @@ For example, animate the total connectedness from a rolling result:
 ```python
 from pyconnectedness.viz import plot_spillovers
 
-anim = plot_spillovers(dynamic.total, animation=True)
+anim = spillover_heatmap(dynamic, kind="pairwise_net", annotate=False,
+                         animation=True, freq="YE", interval=400)
 ```
+![Animated connectedness network - Diebold-Yilmaz (2009)](examples/gifs/dy2009_pairwise_net.gif)
 
 For complete examples, see the replication notebooks below.
 
