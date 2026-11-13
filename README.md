@@ -32,13 +32,14 @@ analysing connectedness, spillovers and dependence in multivariate (time series)
 - **Frequency-domain connectedness**  
   Analysis of spillovers across different time horizons.
 
+- **Animations**
+  Animated heatmaps, networks and time series
+
 ![In progress](https://img.shields.io/badge/status-in%20progress-orange)  
 
 - **Max-linear Bayesian networks** 
   Modelling extremal dependence and causal structures between extreme events.
 
-- **Animations**
-  Animated heatmaps, networks and time series (next release)
 
 
 
@@ -138,13 +139,22 @@ The package currently provides:
 - within-frequency connectedness
 - spillover heatmaps
 - directed connectedness networks
+- time series of the rolling measures
+- animations of all plots (`animation=True`)
 
+### Animations (v0.2.0)
 
-### Preview: animations (next release)
+Heatmaps, connectedness networks and spillover time series can be animated
+with `animation=True`, showing changes across rolling windows or
+building up figures step by step.
 
-The next version will add animated versions of the figures, built up step by step, or played back one rolling window per frame. 
+For example, animate the total connectedness from a rolling result:
 
+```python
+from pyconnectedness.viz import plot_spillovers
 
+anim = plot_spillovers(dyn.total, animation=True)
+```
 
 For complete examples, see the replication notebooks below.
 
