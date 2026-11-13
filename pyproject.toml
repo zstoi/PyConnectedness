@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "pyconnectedness"
-version = "0.1.0"
+version = "0.2.0"
 description = "Python library for connectedness, spillover, extreme-event, and causal risk analysis"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -32,7 +32,7 @@ classifiers = [
 ]
 dependencies = [
     "numpy>=1.24",
-    "pandas>=2.0",
+    "pandas>=2.2",
     "statsmodels>=0.14",
     "networkx>=3.0",
     "matplotlib>=3.6",    
@@ -67,6 +67,7 @@ packages = ["src/pyconnectedness"]
 [tool.hatch.build.targets.sdist]
 exclude = [
     "/examples/data/dy2012_vola.xlsx",
+    "/examples/gifs",
 ]
 
 [tool.pytest.ini_options]

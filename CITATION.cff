@@ -9,7 +9,7 @@ authors:
     family-names: Stoiljkovic
   - given-names: Miljana
     family-names: Cvetkovic
-version: 0.1.0
+version: 0.2.0
 repository-code: 'https://github.com/zstoi/PyConnectedness'
 url: 'https://github.com/zstoi/PyConnectedness'
 keywords:
