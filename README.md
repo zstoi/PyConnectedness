@@ -153,7 +153,7 @@ For example, animate the total connectedness from a rolling result:
 ```python
 from pyconnectedness.viz import plot_spillovers
 
-anim = plot_spillovers(dyn.total, animation=True)
+anim = plot_spillovers(dynamic.total, animation=True)
 ```
 
 For complete examples, see the replication notebooks below.
