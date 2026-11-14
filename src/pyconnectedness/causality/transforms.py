@@ -7,7 +7,7 @@ with index :math:`\alpha` and unit scale,
 
 References
 ----------
-Klüppelberg, C. and M. Krali (2021) Estimating an extreme Bayesian network via scalings. 
+Klüppelberg, C. and M. Krali (2021) Estimating an extreme Bayesian network via scalings.
 Journal of Multivariate Analysis 181, 104672.
 Klüppelberg, C. and M. Krali (2025) Causal analysis of extreme risk in a
 network of industry portfolios. arXiv:2504.00523.

@@ -1,18 +1,19 @@
 r"""
 Structure learning and estimation of recursive max-linear models via scalings
 
-Adapted from code of the authors (CJS_functions_code.R) 
+Adapted from code of the authors (CJS_functions_code.R)
 
-Node comes before its parents, so the sources are last and the max-linear coefficient matrix 
+Node comes before its parents, so the sources are last and the max-linear coefficient matrix
 is upper triangular in that order.
 
 References
 ----------
-Klüppelberg, C. and M. Krali (2021) Estimating an extreme Bayesian network via scalings. 
+Klüppelberg, C. and M. Krali (2021) Estimating an extreme Bayesian network via scalings.
 Journal of Multivariate Analysis 181, 104672.
-Klüppelberg, C. and M. Krali (2025) Causal analysis of extreme risk in a network of industry portfolios. 
+Klüppelberg, C. and M. Krali (2025) Causal analysis of extreme risk in a network
+of industry portfolios.
 arXiv:2504.00523.
-Krali, M. (2025) Causal discovery in heavy-tailed linear structural equation models via scalings. 
+Krali, M. (2025) Causal discovery in heavy-tailed linear structural equation models via scalings.
 arXiv:2502.13762.
 """
 
@@ -66,7 +67,7 @@ def _delta_sources(z, i, j, a, k):
     r"""
     Entry (i, j) of :math:`\Delta_\emptyset` in the first step of Algorithm 1
 
-    Equation (9): j is a source node iff the entry is zero for all i. The rescaled and 
+    Equation (9): j is a source node iff the entry is zero for all i. The rescaled and
     the plain maximum are estimated from their own exceedances, and
     :math:`\sigma_j^2 = 1` enters by its theoretical value.
     """
@@ -85,8 +86,8 @@ def _delta_ordered(z, i, j, ordered, a, k):
     .. math:: (\Delta_O)_{ij} = \sigma^2_{M_{i,aj,aO}} - \sigma^2_{M_{i,j,O}}
               - (a^2 - 1)\, \sigma^2_{M_{j,O}}
 
-    All three scalings are taken from the exceedances of the rescaled vector 
-    :math:`(X_i, aX_j, aX_O)`, as in ``sigma_i_aj_aI_diff`` 
+    All three scalings are taken from the exceedances of the rescaled vector
+    :math:`(X_i, aX_j, aX_O)`, as in ``sigma_i_aj_aI_diff``
     Sharing one set of extremes keeps the difference
     stable.
     """
@@ -120,7 +121,7 @@ def causal_order(z, k, a=1.3, eps=0.1):
 
     Notes
     -----
-    Theorem 4(a) finds the source nodes, Theorem 4(b) then adds one generation of 
+    Theorem 4(a) finds the source nodes, Theorem 4(b) then adds one generation of
     descendants per step. Nodes ordered in the same step
     are causally unrelated
 

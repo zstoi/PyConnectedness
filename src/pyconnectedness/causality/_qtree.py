@@ -8,7 +8,7 @@ scale, where the max-linear tree with noise reads
 .. math:: X_i = \bigvee_{j \to i} (c_{ij} + X_j) \vee Z_i + \varepsilon_i
 
 Adapted from the GPL-3.0 reference implementation by Ngoc Mai Tran
-(https://github.com/princengoc/qtree); 
+(https://github.com/princengoc/qtree);
 
 Adjacency matrices are boolean with entry [j, i] for the edge j -> i,
 score matrices hold the edge j -> i in entry [i, j].

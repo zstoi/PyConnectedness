@@ -11,18 +11,19 @@ coefficient :math:`a_{ij}` is the weight of the strongest path from j to
 i, so A holds the channels along which extreme shocks propagate.
 
 Two estimation methods are available through :meth:`MaxLinear.fit`. The
-scaling method estimates a causal order and A for a general DAG. QTree estimates the graph 
+scaling method estimates a causal order and A for a general DAG. QTree estimates the graph
 when it is a root-directed tree, as in a river network.
 
 References
 ----------
-Gissibl, N. and C. Klüppelberg (2018) Max-linear models on directed acyclic graphs. 
+Gissibl, N. and C. Klüppelberg (2018) Max-linear models on directed acyclic graphs.
 Bernoulli 24(4A), 2693-2720.
-Klüppelberg, C. and M. Krali (2021) Estimating an extreme Bayesian network via scalings. 
+Klüppelberg, C. and M. Krali (2021) Estimating an extreme Bayesian network via scalings.
 Journal of Multivariate Analysis 181, 104672.
-Klüppelberg, C. and M. Krali (2025) Causal analysis of extreme risk in a network of industry portfolios. 
+Klüppelberg, C. and M. Krali (2025) Causal analysis of extreme risk in a network
+of industry portfolios.
 arXiv:2504.00523.
-Tran, N. M., J. Buck and C. Klüppelberg (2024) Estimating a directed tree for extremes. 
+Tran, N. M., J. Buck and C. Klüppelberg (2024) Estimating a directed tree for extremes.
 Journal of the Royal Statistical Society Series B 86(3), 771-792.
 """
 
@@ -125,7 +126,7 @@ def nshd(adj1, adj2):
     -----
     .. math:: nSHD(G_1, G_2) = \frac{SHD(G_1, G_2)}{|E(G_1)| + |E(G_2)|}
 
-    where SHD counts the edge additions, deletions and reversals that turn one graph into the other, 
+    where SHD counts the edge additions, deletions and reversals that turn one graph into the other,
     one for every node pair whose edges differ (Klüppelberg and Krali, 2025, Section 7.1).
 
     Returns
@@ -154,9 +155,9 @@ class MaxLinear:
 
     Notes
     -----
-    The scaling method needs margins that are regularly varying with index 2 and 
+    The scaling method needs margins that are regularly varying with index 2 and
     unit scale (Assumption A1 of Klüppelberg and Krali, 2025).
-    ``"frechet"`` is the empirical integral transform of eq. (25)  
+    ``"frechet"`` is the empirical integral transform of eq. (25)
     With None the data are taken as already standardised.
 
     QTree does not use the transform. It works with the logarithms of the
@@ -211,11 +212,11 @@ class MaxLinear:
         method : {"scaling", "qtree"}
             "scaling" estimates a causal order and the max-linear
             coefficients of a general DAG from scalings of
-            max-projections (Klüppelberg and Krali, 2021, 2025). 
+            max-projections (Klüppelberg and Krali, 2021, 2025).
             "qtree" estimates a root-directed spanning tree (Tran, Buck and Klüppelberg, 2024).
         k_order : int, optional
             Number of largest radii for the causal order, defaults to k.
-            The 2025 paper orders with k_order=250 and estimates with k between 50 and 98.     
+            The 2025 paper orders with k_order=250 and estimates with k between 50 and 98.
         order : sequence, optional
             Known causal order, sources first, as names or positions.
             Skips the ordering; every node is then a step of its own.
@@ -240,7 +241,7 @@ class MaxLinear:
 
         Notes
         -----
-        Coefficients between nodes ordered in the same step are set to zero for "generations" 
+        Coefficients between nodes ordered in the same step are set to zero for "generations"
         (Theorem 4(b) of the 2025 paper), and the
         matrix is standardised to unit row norm. The 2021 paper does
         neither, so "sequential" estimates all coefficients and reports
@@ -319,7 +320,7 @@ class MaxLinear:
                                 order_method=order_method, a=a, eps=eps,
                                 known=known)
 
-    def select_k(self, ks=range(50, 100, 2),
+    def select_k(self, ks=None,
                  deltas=(0.0, 0.025, 0.05, 0.1), *, block=5, k_order=250,
                  order=None, order_method="generations", a=None,
                  eps=None):
@@ -351,6 +352,8 @@ class MaxLinear:
         -------
         KSelectionResults
         """
+        if ks is None:
+            ks = range(50, 100, 2)
         ks = sorted(int(r) for r in ks)
         if len(ks) % block:
             raise ValueError("the number of ks must be a multiple of block")
