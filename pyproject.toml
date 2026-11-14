@@ -68,6 +68,8 @@ packages = ["src/pyconnectedness"]
 exclude = [
     "/examples/data/dy2012_vola.xlsx",
     "/examples/gifs",
+    "/examples/data/DR1TOT_I.XPT"
+    "/examples/data/30_Industry_Portfolios_Daily.csv"
 ]
 
 [tool.pytest.ini_options]

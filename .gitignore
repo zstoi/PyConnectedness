@@ -18,3 +18,5 @@ dist/
 build/
 .mypy_cache/
 htmlcov/
+
+examples/data/30_Industry_Portfolios_Daily.csv
