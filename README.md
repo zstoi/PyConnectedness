@@ -256,6 +256,55 @@ Doan, Tom (2025),
 EconPapers:
 https://econpapers.repec.org/software/bocbocode/rtz00199.htm
 
+## Tran, Buck and Klüppelberg (2024)
+
+The files
+
+- `danube_log_discharges.csv`
+- `danube_network.csv`
+
+are taken from the code repository of:
+
+Tran, Ngoc Mai; Buck, Johannes; Klüppelberg, Claudia (2024),
+"Estimating a directed tree for extremes", Journal of the Royal Statistical Society Series B 86(3), 771-792.
+
+GitHub (GPL-3.0):
+https://github.com/princengoc/qtree
+
+The two CSV files hold the discharges and the river network from `danube.pk`. The data were prepared by:
+
+Asadi, Peiman; Davison, Anthony C.; Engelke, Sebastian (2015),
+"Extremes on river networks", Annals of Applied Statistics 9(4), 2023-2050.
+
+## Klüppelberg and Krali (2021)
+
+The file
+
+- `DR1TOT_I.XPT`
+
+is the public-use data file "Dietary Interview - Total Nutrient Intakes, First Day" from:
+
+Centers for Disease Control and Prevention (CDC), National Center for Health Statistics (NCHS),
+"National Health and Nutrition Examination Survey Data, 2015-2016", Hyattsville, MD: U.S. Department of Health and Human Services.
+
+CDC:
+https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2015/DataFiles/DR1TOT_I.xpt
+
+The file is unchanged and is available free of charge from CDC. Its use here does not imply endorsement by CDC, the U.S. Department of Health and Human Services or the United States Government. The data may be used for statistical reporting and analysis only.
+
+## Klüppelberg and Krali (2021, 2025)
+
+The file
+
+- `30_Industry_Portfolios_Daily.csv`
+
+is not distributed with this repository. It can be downloaded from:
+
+French, Kenneth R.,
+"Data Library: 30 Industry Portfolios [Daily]", copyright Eugene F. Fama and Kenneth R. French.
+
+Data Library:
+https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html
 
 ## Funding
 
