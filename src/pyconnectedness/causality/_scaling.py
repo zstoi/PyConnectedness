@@ -13,8 +13,6 @@ Journal of Multivariate Analysis 181, 104672.
 Klüppelberg, C. and M. Krali (2025) Causal analysis of extreme risk in a network
 of industry portfolios.
 arXiv:2504.00523.
-Krali, M. (2025) Causal discovery in heavy-tailed linear structural equation models via scalings.
-arXiv:2502.13762.
 """
 
 import numpy as np
