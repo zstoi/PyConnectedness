@@ -207,7 +207,7 @@ def tree_metrics(estimated, true):
     }
 
 
-def simulate_tree(nobs, d, noise=0.1, coef_range=(0.2, 1.0), seed=None):
+def simulate_tree(nobs, d, noise=0.1, coef_range=(0.2, 1.0), coef_scale = original, seed=None):
     """
     Draw log data from a random max-linear root-directed tree
 
@@ -215,17 +215,19 @@ def simulate_tree(nobs, d, noise=0.1, coef_range=(0.2, 1.0), seed=None):
     ----------
     nobs : int
     d : int
-        Number of nodes.
+        Number of nodes, at least 2
     noise : float
         Noise-to-signal ratio; Gaussian noise with this fraction of the
-        median standard deviation is added after the recursion.
+        median standard deviation - added after the recursion.
     coef_range : tuple
-        Edge weights are uniform on this range (original scale).
+        Lower and upper bound of the edge weights on the original scale
+    coef_scale: {"original", "log"}
+        Scale on which the edge weghts are unifrom. 
     seed : {None, int, Generator}
 
     Notes
     -----
-    Mirrors the simulation study in Section 5 of the paper: standard
+    The tree is a uniformly random labelled tree. Standard
     Fréchet innovations, i.e. Gumbel on the log scale.
 
     Returns
@@ -233,18 +235,25 @@ def simulate_tree(nobs, d, noise=0.1, coef_range=(0.2, 1.0), seed=None):
     x : ndarray (nobs x d)
     adjacency : ndarray (d x d) of bool
     """
+    if d < 2:
+        raise ValueError("d must be at least 2")
+    if coef_scale not in ("original", "log"):
+        raise ValueError("coef_scale must be 'original' or 'log'")    
     rng = np.random.default_rng(seed)
 
-    # every node drains into one node with a smaller label, node 0 is
-    # the root; the labels are shuffled afterwards
-    child = np.array([-1] + [rng.integers(0, i) for i in range(1, d)])
-    perm = rng.permutation(d)
+    tree = nx.fro9m_prufer_sequencec(rng.integers(0, d, size = d-2).tolist())
     adjacency = np.zeros((d, d), dtype=bool)
-    logc = np.zeros((d, d))
-    for j in range(1, d):
-        adjacency[perm[j], perm[child[j]]] = True
-        logc[perm[j], perm[child[j]]] = np.log(rng.uniform(*coef_range))
+    # breadth-first from the root, every node drains into its predecessor
+    for node, pred in nx.bfs_predecessors(tree, int(rng.integers(0, d))):
+        adjacency[node, pred] = True
 
+    low, high = coef_range
+    # only the entries of the edges are used
+    if coef_scale == "log":
+        logc = rng.uniform(np.log(low), np.log(high), size=(d, d))
+    else:
+        logc = np.log(rng.uniform(low, high, size=(d, d)))
+        
     x = rng.gumbel(size=(nobs, d))
     # sources first: a node is finished once all its parents are
     for i in nx.topological_sort(nx.DiGraph(adjacency)):
