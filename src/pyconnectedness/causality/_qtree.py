@@ -222,7 +222,7 @@ def simulate_tree(nobs, d, noise=0.1, coef_range=(0.2, 1.0), coef_scale = origin
     coef_range : tuple
         Lower and upper bound of the edge weights on the original scale
     coef_scale: {"original", "log"}
-        Scale on which the edge weghts are unifrom. 
+        Scale on which the edge weghts are unifrom.
     seed : {None, int, Generator}
 
     Notes
@@ -238,7 +238,7 @@ def simulate_tree(nobs, d, noise=0.1, coef_range=(0.2, 1.0), coef_scale = origin
     if d < 2:
         raise ValueError("d must be at least 2")
     if coef_scale not in ("original", "log"):
-        raise ValueError("coef_scale must be 'original' or 'log'")    
+        raise ValueError("coef_scale must be 'original' or 'log'")
     rng = np.random.default_rng(seed)
 
     tree = nx.fro9m_prufer_sequencec(rng.integers(0, d, size = d-2).tolist())
@@ -253,7 +253,7 @@ def simulate_tree(nobs, d, noise=0.1, coef_range=(0.2, 1.0), coef_scale = origin
         logc = rng.uniform(np.log(low), np.log(high), size=(d, d))
     else:
         logc = np.log(rng.uniform(low, high, size=(d, d)))
-        
+
     x = rng.gumbel(size=(nobs, d))
     # sources first: a node is finished once all its parents are
     for i in nx.topological_sort(nx.DiGraph(adjacency)):
