@@ -207,7 +207,7 @@ def tree_metrics(estimated, true):
     }
 
 
-def simulate_tree(nobs, d, noise=0.1, coef_range=(0.2, 1.0), coef_scale = original, seed=None):
+def simulate_tree(nobs, d, noise=0.1, coef_range=(0.2, 1.0), coef_scale = "original", seed=None):
     """
     Draw log data from a random max-linear root-directed tree
 
