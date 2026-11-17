@@ -241,7 +241,7 @@ def simulate_tree(nobs, d, noise=0.1, coef_range=(0.2, 1.0), coef_scale = "origi
         raise ValueError("coef_scale must be 'original' or 'log'")
     rng = np.random.default_rng(seed)
 
-    tree = nx.fro9m_prufer_sequencec(rng.integers(0, d, size = d-2).tolist())
+    tree = nx.from_prufer_sequence(rng.integers(0, d, size = d-2).tolist())
     adjacency = np.zeros((d, d), dtype=bool)
     # breadth-first from the root, every node drains into its predecessor
     for node, pred in nx.bfs_predecessors(tree, int(rng.integers(0, d))):
